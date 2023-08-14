@@ -1,5 +1,6 @@
 package br.stapassoli.kafkaConsumer.listner;
 
+import br.stapassoli.kafkaConsumer.annotations.PersonListnerAnnotation;
 import br.stapassoli.kafkaConsumer.model.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -20,8 +21,13 @@ public class KafkaListner {
     }
 
 
-    @KafkaListener(topics = "person-topic", groupId = "group-1" , containerFactory = "personListnerContainer")
+    @PersonListnerAnnotation(groupId = "group-1")
     public void listenPerson(Person person) {
+        log.info("recieved person , {} ", person);
+    }
+
+    @PersonListnerAnnotation(groupId = "group-2")
+    public void listenPersonSecondGroup(Person person) {
         log.info("recieved person , {} ", person);
     }
 
