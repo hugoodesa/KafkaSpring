@@ -1,5 +1,6 @@
 package br.stapassoli.kafkaProduce.kafkaProducer.service;
 
+import br.stapassoli.kafkaProduce.kafkaProducer.model.City;
 import br.stapassoli.kafkaProduce.kafkaProducer.model.Person;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -19,5 +20,9 @@ public class ProducerFactoryService {
 
     public void sendPerson(Person person) {
         this.jsonKafkaTemplate.send("person-topic", person);
+    }
+
+    public void sendCity(City city) {
+        this.jsonKafkaTemplate.send("city-topic",city);
     }
 }

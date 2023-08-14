@@ -1,5 +1,6 @@
 package br.stapassoli.kafkaProduce.kafkaProducer.controller;
 
+import br.stapassoli.kafkaProduce.kafkaProducer.model.City;
 import br.stapassoli.kafkaProduce.kafkaProducer.model.Person;
 import br.stapassoli.kafkaProduce.kafkaProducer.service.ProducerFactoryService;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,11 @@ public class ProducerController {
 
         producerFactoryService.sendPerson(person);
 
+    }
+
+    @PostMapping("/city")
+    public void city() {
+        producerFactoryService.sendCity(City.builder().id(1L).sigla("SC").nome("Santa Catarina").build());
     }
 
 
